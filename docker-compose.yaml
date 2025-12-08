@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: postgres-lpt
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: lapetite
+    ports:
+      - "5435:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-data:
