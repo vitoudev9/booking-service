@@ -13,6 +13,8 @@ spring:
       ddl-auto: none
     properties:
       hibernate:
+        show-sql: true
+        sql-format: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
   flyway:

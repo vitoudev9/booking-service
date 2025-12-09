@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS Customer (
     id BIGSERIAL PRIMARY KEY,
-    full_name VARCHAR(100) NOT NULL,
-    phone VARCHAR(100) NOT NULL UNIQUE
+    full_name VARCHAR(100),
+    phone_number VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS Employee (
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS Appointment (
     status VARCHAR(50) NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_customer_phone ON Customer(phone);
+CREATE INDEX IF NOT EXISTS idx_customer_phone ON Customer(phone_number);
 CREATE INDEX IF NOT EXISTS idx_customer_name ON Customer(full_name);
 CREATE INDEX IF NOT EXISTS idx_employee_name ON Employee(full_name);
 

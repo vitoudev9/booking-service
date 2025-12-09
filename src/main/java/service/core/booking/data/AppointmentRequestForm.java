@@ -1,4 +1,4 @@
-package service.core.booking.dto;
+package service.core.booking.data;
 
 import lombok.Data;
 
@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 public class AppointmentRequestForm {
     private Long serviceId;
     private Long employeeId;
-    private String customerFullName;
-    private String customerPhoneNumber;
     private LocalDateTime startTime;
+    private CustomerData customer;
 }
