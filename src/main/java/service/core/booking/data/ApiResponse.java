@@ -1,22 +1,19 @@
 package service.core.booking.data;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import org.springframework.http.HttpStatus;
+import lombok.Data;
+import java.time.LocalDateTime;
 
-import java.time.Instant;
-
-@AllArgsConstructor
+@Data
 public class ApiResponse<T> {
-    private HttpStatus status;
+    private int status;
     private String message;
+    private LocalDateTime timestamp;
     private T data;
-    private Instant timestamp;
 
-    public ApiResponse(HttpStatus status, String message, T data) {
+    public ApiResponse(int status, String message, T data) {
         this.status = status;
         this.message = message;
+        this.timestamp = LocalDateTime.now();
         this.data = data;
-        this.timestamp = Instant.now();
     }
 }

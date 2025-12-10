@@ -47,6 +47,13 @@ public class AppointmentService {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
+    public AppointmentResponseData getAppointmentById(Long id) {
+        return appointmentRepository.findById(id)
+                .map(mapper::toDTO)
+                .orElseThrow(() -> new EntityNotFoundException("Appoint not found"));
+    }
+
     @Transactional
     public AppointmentResponseData bookNewAppointment(AppointmentRequestForm requestForm) {
 
@@ -80,8 +87,6 @@ public class AppointmentService {
         newAppointment.setEmployee(employee);
         newAppointment.setStartTime(startTime);
         newAppointment.setEndTime(endTime);
-        appointmentRepository.save(newAppointment);
-
-        return ObjectMapperUtil.map(newAppointment, AppointmentResponseData.class);
+        return mapper.toDTO(appointmentRepository.save(newAppointment));
     }
 }
