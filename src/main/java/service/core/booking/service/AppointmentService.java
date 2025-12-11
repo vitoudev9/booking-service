@@ -51,7 +51,7 @@ public class AppointmentService {
     public AppointmentResponseData getAppointmentById(Long id) {
         return appointmentRepository.findById(id)
                 .map(mapper::toDTO)
-                .orElseThrow(() -> new EntityNotFoundException("Appoint not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Appointment not found"));
     }
 
     @Transactional
