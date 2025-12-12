@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import service.core.booking.data.ApiResponse;
 import service.core.booking.data.AppointmentRequestForm;
 import service.core.booking.data.AppointmentResponseData;
+import service.core.booking.data.CustomerData;
 import service.core.booking.service.AppointmentService;
+import service.core.booking.service.CustomerService;
 
 import java.util.List;
 
@@ -20,6 +22,7 @@ import java.util.List;
 public class BookingController {
 
     private final AppointmentService appointmentService;
+    private final CustomerService customerService;
 
     @GetMapping("/health")
     public ResponseEntity<String> getHealthCheck() {
@@ -55,13 +58,41 @@ public class BookingController {
     }
 
     @GetMapping("/bookings/{id}")
-    public ApiResponse<AppointmentResponseData> getAppointment(@PathVariable("id") Long id) {
+    public ApiResponse<AppointmentResponseData> getAppointmentById(@PathVariable("id") Long id) {
         try {
             final AppointmentResponseData appointment = appointmentService.getAppointmentById(id);
             return new ApiResponse<>(
                     HttpStatus.OK.value(),
                     String.format("Successfully get appointment with Id: %s", id),
                     appointment
+            );
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/customers")
+    public ApiResponse<List<CustomerData>> listCustomers() {
+        try {
+            final List<CustomerData> customerList = customerService.listAllCustomers();
+            return new ApiResponse<>(
+                    HttpStatus.OK.value(),
+                    "Successfully list customers",
+                    customerList
+            );
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @GetMapping("/customers/{id}")
+    public ApiResponse<CustomerData> getCustomerById(@PathVariable("id") Long id) {
+        try {
+            final CustomerData customer = customerService.getCustomerById(id);
+            return new ApiResponse<>(
+                    HttpStatus.OK.value(),
+                    String.format("Successfully get customer with Id: %s", id),
+                    customer
             );
         } catch (Exception e) {
             throw new RuntimeException(e);
