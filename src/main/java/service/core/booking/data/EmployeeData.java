@@ -4,8 +4,9 @@ import lombok.Data;
 
 @Data
 public class EmployeeData {
-    private Long id;
+    private String id;
     private String fullName;
-    private String specialty;
+    private String phoneNumber;
+    private String specialization;
     private boolean active;
 }

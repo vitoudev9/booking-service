@@ -5,6 +5,6 @@ import service.core.booking.model.AppUser;
 
 import java.util.Optional;
 
-public interface AppUserRepository extends JpaRepository<AppUser, Long> {
+public interface AppUserRepository extends JpaRepository<AppUser, String> {
     Optional<AppUser> findByUsername(String username);
 }

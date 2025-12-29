@@ -5,9 +5,11 @@ import lombok.Data;
 import java.math.BigDecimal;
 
 @Data
-public class LapetiteServiceData {
-    private Long id;
+public class ServiceData {
+    private String id;
     private String name;
-    private int duration;
+    private int durationMinutes;
     private BigDecimal price;
+    private String description;
+    private boolean active;
 }

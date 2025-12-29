@@ -58,7 +58,7 @@ public class BookingController {
     }
 
     @GetMapping("/bookings/{id}")
-    public ApiResponse<AppointmentResponseData> getAppointmentById(@PathVariable("id") Long id) {
+    public ApiResponse<AppointmentResponseData> getAppointmentById(@PathVariable("id") String id) {
         try {
             final AppointmentResponseData appointment = appointmentService.getAppointmentById(id);
             return new ApiResponse<>(
@@ -86,7 +86,7 @@ public class BookingController {
     }
 
     @GetMapping("/customers/{id}")
-    public ApiResponse<CustomerData> getCustomerById(@PathVariable("id") Long id) {
+    public ApiResponse<CustomerData> getCustomerById(@PathVariable("id") String id) {
         try {
             final CustomerData customer = customerService.getCustomerById(id);
             return new ApiResponse<>(

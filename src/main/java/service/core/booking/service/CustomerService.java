@@ -26,7 +26,7 @@ public class CustomerService {
     }
 
     @Transactional(readOnly = true)
-    public CustomerData getCustomerById(Long id) {
+    public CustomerData getCustomerById(String id) {
         return customerRepository.findById(id)
                 .map(mapper::toDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Customer not found"));

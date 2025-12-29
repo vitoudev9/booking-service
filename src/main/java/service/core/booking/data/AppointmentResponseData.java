@@ -2,13 +2,17 @@ package service.core.booking.data;
 
 import lombok.Data;
 
+import java.time.OffsetDateTime;
+
 @Data
 public class AppointmentResponseData {
-    private Long id;
+    private String id;
     private CustomerData customer;
     private EmployeeData employee;
-    private LapetiteServiceData service;
+    private ServiceData service;
     private String status;
-    private String startTime;
-    private String endTime;
+    private OffsetDateTime startTime;
+    private OffsetDateTime endTime;
+    private String notes;
+    private boolean confirmed;
 }

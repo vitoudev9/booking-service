@@ -2,12 +2,12 @@ package service.core.booking.data;
 
 import lombok.Data;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 @Data
 public class AppointmentRequestForm {
-    private Long serviceId;
-    private Long employeeId;
-    private LocalDateTime startTime;
+    private String serviceId;
+    private String employeeId;
+    private OffsetDateTime startTime;
     private CustomerData customer;
 }

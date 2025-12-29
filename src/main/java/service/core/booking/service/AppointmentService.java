@@ -18,9 +18,8 @@ import service.core.booking.repository.AppointmentRepository;
 import service.core.booking.repository.CustomerRepository;
 import service.core.booking.repository.EmployeeRepository;
 import service.core.booking.repository.LapetiteServiceRepository;
-import service.core.booking.utils.ObjectMapperUtil;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 @Service
@@ -48,7 +47,7 @@ public class AppointmentService {
     }
 
     @Transactional(readOnly = true)
-    public AppointmentResponseData getAppointmentById(Long id) {
+    public AppointmentResponseData getAppointmentById(String id) {
         return appointmentRepository.findById(id)
                 .map(mapper::toDTO)
                 .orElseThrow(() -> new EntityNotFoundException("Appointment not found"));
@@ -78,8 +77,8 @@ public class AppointmentService {
             customer.setPhoneNumber(customerPhoneNumber);
         }
 
-        final LocalDateTime startTime = requestForm.getStartTime();
-        final LocalDateTime endTime = startTime.plusMinutes(service.getDuration());
+        final OffsetDateTime startTime = requestForm.getStartTime();
+        final OffsetDateTime endTime = startTime.plusMinutes(service.getDurationMinutes());
 
         final Appointment newAppointment = new Appointment();
         newAppointment.setLapetiteService(service);

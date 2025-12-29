@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class CustomerData {
-    private Long id;
+    private String id;
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private boolean existing;
     private String fullName;

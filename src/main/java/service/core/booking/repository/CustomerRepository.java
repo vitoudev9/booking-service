@@ -5,7 +5,7 @@ import service.core.booking.model.Customer;
 
 import java.util.Optional;
 
-public interface CustomerRepository extends JpaRepository<Customer, Long> {
+public interface CustomerRepository extends JpaRepository<Customer, String> {
 
     Optional<Customer> findByFullNameOrPhoneNumber(String fullName, String phoneNumber);
 }

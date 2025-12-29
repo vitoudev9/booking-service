@@ -9,8 +9,6 @@ import service.core.booking.model.Appointment;
         uses = { CustomerMapper.class, EmployeeMapper.class, LapetiteServiceMapper.class })
 public interface AppointmentMapper {
 
-    @Mapping(target = "startTime", source = "startTime", dateFormat = "yyyy-MM-dd HH:mm:ss")
-    @Mapping(target = "endTime", source = "endTime", dateFormat = "yyyy-MM-dd HH:mm:ss")
     @Mapping(target = "service", source = "lapetiteService")
     AppointmentResponseData toDTO(Appointment appointment);
 
